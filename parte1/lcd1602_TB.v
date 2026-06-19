@@ -1,5 +1,5 @@
 `timescale 1ns / 1ps
-`include "src/lcd1602_text.v"
+`include "lcd1602_text.v"
 
 module LCD1602_controller_TB();
     reg clk;

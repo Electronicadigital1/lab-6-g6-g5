@@ -51,14 +51,14 @@ initial begin
     data <= 8'b0;
     clk_16ms <= 1'b0;
     clk_counter <= 'b0;
-    $readmemh("path_to_txt.txt", static_data_mem);    
+    $readmemh("data.txt", static_data_mem);    
 	config_mem[0] <= LINES2_MATRIX5x8_MODE8bit;
 	config_mem[1] <= SHIFT_CURSOR_RIGHT;
 	config_mem[2] <= DISPON_CURSOROFF;
 	config_mem[3] <= CLEAR_DISPLAY;
 end
 
-always @(posedge clk) begin
+always @(posedge clk) begin 
     if (clk_counter == COUNT_MAX-1) begin
         clk_16ms <= ~clk_16ms;
         clk_counter <= 'b0;
@@ -68,7 +68,7 @@ always @(posedge clk) begin
 end
 
 
-always @(posedge clk_16ms)begin
+always @(posedge clk_16ms)begin // bloque de transición de estado
     if(reset == 0)begin
         fsm_state <= IDLE;
     end else begin
@@ -76,7 +76,7 @@ always @(posedge clk_16ms)begin
     end
 end
 
-always @(*) begin
+always @(*) begin  // lógica de próximo estado
     case(fsm_state)
         IDLE: begin
             next_state <= (ready_i)? CONFIG_CMD1 : IDLE;
@@ -102,7 +102,7 @@ always @(posedge clk_16ms) begin
         command_counter <= 'b0;
         data_counter <= 'b0;
 		  data <= 'b0;
-        $readmemh("path_to_txt.txt", static_data_mem);
+        $readmemh("data.txt", static_data_mem);
     end else begin
         case (next_state)
             IDLE: begin
