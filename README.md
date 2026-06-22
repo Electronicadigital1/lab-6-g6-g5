@@ -127,7 +127,7 @@ Se configuró el pin `nCEO` (PIN_101) como I/O regular en `Assignments → Devic
 
 ### Parte 1 — Texto estático
 
-![Implementación Parte 1](imagenes/fpga_p1.jpg)
+![Implementación Parte 1](imagenes/fpga_p1.jpeg)
 
 ### Parte 2 — Texto dinámico
 
