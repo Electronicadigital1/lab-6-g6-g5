@@ -33,12 +33,12 @@ La señal `enable` de la LCD se conecta directamente a `clk_16ms` sin pasar por 
 #### Diagrama de la FSM — Parte 1
 
 
-![Diagrama FSM Parte 1](imagenes/fsm_p1.png)
+![Diagrama FSM Parte 1](imagenes/fsm.jpeg)
 
 #### Diagrama de arquitectura — Parte 1
 
 <!-- Insertar imagen del diagrama de arquitectura (draw.io) aquí -->
-![Diagrama de arquitectura Parte 1](./figs/arquitectura_p1.png)
+![Diagrama de arquitectura Parte 1](imagenes/arquitectura_lcd1602.png)
 
 #### Diagrama de la FSM — Parte 2
 
@@ -79,7 +79,7 @@ En la simulación se observa:
 - `data` mostrando los comandos de inicialización (`0x38`, `0x06`, `0x0C`, `0x01`) seguidos de los códigos ASCII de "Bateria 1" (`0x42`, `0x61`, `0x74`...) en la primera línea, y "Bateria 2" en la segunda.
 - `data_counter` incrementándose de `0x00` a `0x10` durante cada estado de escritura.
 
-![Simulación GTKWave Parte 1](./figs/gtkwave_p1.png)
+![Simulación GTKWave Parte 1](imagenes/sim1.png)
 
 ### Parte 2 — Texto dinámico
 
@@ -90,12 +90,9 @@ La simulación de la Parte 2 verifica el comportamiento del estado `WR_DIN_TEXT`
 - Para `temp2 = 15`: se envía `0xCB` (cursor línea 2), luego `0x31` ('1') y `0x35` ('5') → muestra "15".
 - El ciclo se repite continuamente, actualizando los valores en tiempo real cada vez que cambian los switches.
 
-![Simulación GTKWave Parte 2](./figs/gtkwave_p2.png)
+![Simulación GTKWave Parte 1](imagenes/sim2.png)
 
 ---
-
-<!-- (Incluir las de Digital si hicieron uso de esta herramienta, pero también deben incluir simulaciones realizadas usando un simulador HDL como por ejemplo Icarus Verilog + GTKwave) -->
-
 
 ## Implementación
 La implementación se realizó sobre la tarjeta de desarrollo A-C4E6E10 con la FPGA Intel Cyclone IV EP4CE10E22C8, usando Quartus Prime Lite 23.1.
@@ -130,11 +127,25 @@ Se configuró el pin `nCEO` (PIN_101) como I/O regular en `Assignments → Devic
 
 ### Parte 1 — Texto estático
 
-![Implementación Parte 1](./figs/fpga_p1.jpg)
+![Implementación Parte 1](imagenes/fpga_p1.jpg)
 
 ### Parte 2 — Texto dinámico
 
-![Implementación Parte 2](./figs/fpga_p2.jpg)
+- Bateria 1: 15 (1111)
+  Bateria 2: 00 (0000)
+![Implementación Parte 2](imagenes/1500.jpeg)
+
+- Bateria 1: 07 (0111)
+  Bateria 2: 07 (0111)
+![Implementación Parte 2](imagenes/0707.jpg)
+
+- Bateria 1: 08 (1000)
+  Bateria 2: 01 (0001)
+![Implementación Parte 2](imagenes/0801.jpg)
+
+- Bateria 1: 00
+  Bateria 2: 00
+![Implementación Parte 2](imagenes/0000.jpg)
 
 ---
 
