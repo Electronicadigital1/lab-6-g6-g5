@@ -137,15 +137,15 @@ Se configuró el pin `nCEO` (PIN_101) como I/O regular en `Assignments → Devic
 
 - Bateria 1: 07 (0111)
   Bateria 2: 07 (0111)
-![Implementación Parte 2](imagenes/0707.jpg)
+![Implementación Parte 2](imagenes/0707.jpeg)
 
 - Bateria 1: 08 (1000)
   Bateria 2: 01 (0001)
-![Implementación Parte 2](imagenes/0801.jpg)
+![Implementación Parte 2](imagenes/0801.jpeg)
 
 - Bateria 1: 00
   Bateria 2: 00
-![Implementación Parte 2](imagenes/0000.jpg)
+![Implementación Parte 2](imagenes/0000.jpeg)
 
 ---
 
